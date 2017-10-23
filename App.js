@@ -5,6 +5,11 @@
  */
 
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, combineReduxers, compose } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import createLogger from 'redux-logger';
+
 import {
   Platform,
   StyleSheet,
@@ -19,7 +24,7 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-export default class App extends Component<{}> {
+export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
