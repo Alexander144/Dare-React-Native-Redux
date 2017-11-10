@@ -9,9 +9,12 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReduxers, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import reducer from "./app/reducers"
+import reducer from "../app/reducers";
+import AppContainer from "../app/containers/AppContainer";
 
 const loggerMiddleware = createLogger({ predicate: (getState, action) => __DEV__  });
+
+const store = configureStore({});
 
 function configureStore(initialState)
 {
@@ -24,25 +27,7 @@ function configureStore(initialState)
   return createStore(reducer, initialState, enhancer);
 }
 
-const store = configureStore({});
-
-import 
-{
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-
-const instructions = Platform.select(
-  {
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-  });
-
-export const Startup = () =>
+export default Startup = () =>
 (
   <Provider store = {store}>
     <AppContainer />

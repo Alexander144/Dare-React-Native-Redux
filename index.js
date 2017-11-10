@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import Startup from './Startup';
+import Startup from './scene/Startup';
 
 AppRegistry.registerComponent('dare', () => Startup);
