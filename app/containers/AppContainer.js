@@ -6,14 +6,28 @@ import
 {
     View,
     Text,
+    Button,
 } from "react-native";
 
 class AppContainer extends Component
 {
+    constructor(props)
+    {
+        super(props);
+    }
+
+    AddUser()
+    {
+        this.props.AddUser();
+    }
+
     render()
     {
         return <View>
-            <Text style = {{ marginTop: 20 }}> AppContainer </Text>
+            <Text style = {{ marginTop: 20 }}> 
+                AppContainer UserCount: { this.props.UserCount } 
+            </Text>
+            <Button title = "press" onPress = { () => this.AddUser() }> </Button>
         </View>
     }
 }
@@ -23,4 +37,8 @@ function mapDispatchToProps(dispatch)
     return bindActionCreators(ActionCreators, dispatch);
 }
 
-export default connect(() => { return {} }, mapDispatchToProps)(AppContainer);
+export default connect((state) => {
+    return {
+        UserCount: state.UserCount
+    }
+}, mapDispatchToProps)(AppContainer);
